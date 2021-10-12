@@ -7,17 +7,17 @@ import styles from '../styles/Home.module.css'
 
 export default function Home() {
   // const [state, setState] = useState([])
-  const [items, setItems] = useState([])
+  // const [items, setItems] = useState([])
   const dispatch =useDispatch();
   const {posts}= useSelector(state=>state.post)
   // const [loading,error,post] =posts
 
   useEffect(()=>{
     dispatch(fetchposts())
-   console.log(posts,'heyyyy');
-   setItems(posts)
+  //  console.log(posts,'heyyyy');
+  //  setItems(posts)
 
-  },[])
+  },[dispatch])
   return (
     <div className={styles.container}>
       <Head>
@@ -34,10 +34,10 @@ export default function Home() {
           <h1 >{item.title}</h1>
         ))} */}
 
-        <h1>{items.title}</h1>
-        <p>{items.price}</p>
-        <p>{items.description}</p>
-        <img src={items.image} alt="" />
+        <h1>{posts.title}</h1>
+        <p>{posts.price}</p>
+        <p>{posts.description}</p>
+        <img src={posts.image} alt="" />
 
 
         
