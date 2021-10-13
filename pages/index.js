@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchName, fetchposts } from '../store/action/postAction'
+import { fetchData, fetchName, fetchposts } from '../store/action/postAction'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
   // const {error}=useSelector(state=>state.post)
 
   useEffect(()=>{
-    dispatch(fetchposts())
+    dispatch(fetchData())
     dispatch(fetchName())
   },[dispatch])
   return (
