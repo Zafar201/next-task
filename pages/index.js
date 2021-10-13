@@ -8,8 +8,11 @@ import styles from '../styles/Home.module.css'
 export default function Home() {
  
   const dispatch =useDispatch();
-  const {posts}= useSelector(state=>state.post)
+  const posts= useSelector(state=>state.post)
+   const{loading,error,data}=posts
   const {names}= useSelector(state=>state.name)
+  // const {loading}=useSelector(state=>state.post)
+  // const {error}=useSelector(state=>state.post)
 
   useEffect(()=>{
     dispatch(fetchposts())
@@ -28,14 +31,20 @@ export default function Home() {
          Next JS With next-redux-wrapper
         </h1> */}
        
+       {loading? (<h1>Loading...</h1>):
+       error? (<h1>error</h1>):
+      (
+        <>
+        <h1>{data.title}</h1>
+        <p>{data.price}</p>
+        <p>{data.description}</p>
+        <img src={data.image} alt="" />
+        </>
+      )}
 
-        <h1>{posts.title}</h1>
-        <p>{posts.price}</p>
-        <p>{posts.description}</p>
-        <img src={posts.image} alt="" />
 
       {names && names.map(item=>(
-          <h1 >{item}</h1>
+          <h1 key={item}>{item}</h1>
         ))}
 
 

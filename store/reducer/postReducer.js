@@ -3,7 +3,7 @@ import * as types from '../type'
 const initialState ={
     posts:[],
     post:{},
-    loading:false,
+    loading:true,
     error:null,
 }
 export const postReducer=(state=initialState,action)=>{
@@ -11,7 +11,7 @@ export const postReducer=(state=initialState,action)=>{
       case types.GET_DATA:
           return{
               ...state,
-              posts:action.payload,
+              data:action.payload,
               loading:false,
               error:null
           }
