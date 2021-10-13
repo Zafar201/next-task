@@ -10,7 +10,7 @@ export default function Home() {
   const dispatch =useDispatch();
   const posts= useSelector(state=>state.post)
    const{loading,error,data}=posts
-  const {names}= useSelector(state=>state.name)
+  
   // const {loading}=useSelector(state=>state.post)
   // const {error}=useSelector(state=>state.post)
 
@@ -43,9 +43,6 @@ export default function Home() {
       )}
 
 
-      {names && names.map(item=>(
-          <h1 key={item}>{item}</h1>
-        ))}
 
 
         
