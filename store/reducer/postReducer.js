@@ -19,3 +19,17 @@ export const postReducer=(state=initialState,action)=>{
               return state
   }
 }
+
+export const getNameReducer=(state=initialState,action)=>{
+    switch(action.type){
+        case types.GET_NAMES:
+            return{
+                ...state,
+                names:action.payload,
+                loading:false,
+                error:null
+            }
+            default:
+            return state
+    }
+}

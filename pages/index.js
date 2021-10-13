@@ -2,21 +2,18 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchposts } from '../store/action/postAction'
+import { fetchName, fetchposts } from '../store/action/postAction'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
-  // const [state, setState] = useState([])
-  // const [items, setItems] = useState([])
+ 
   const dispatch =useDispatch();
   const {posts}= useSelector(state=>state.post)
-  // const [loading,error,post] =posts
+  const {names}= useSelector(state=>state.name)
 
   useEffect(()=>{
     dispatch(fetchposts())
-  //  console.log(posts,'heyyyy');
-  //  setItems(posts)
-
+    dispatch(fetchName())
   },[dispatch])
   return (
     <div className={styles.container}>
@@ -27,17 +24,19 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-        {/* {items && posts.map(item=>(
-          <h1 >{item.title}</h1>
-        ))} */}
+        {/* <h1 className={styles.title}>
+         Next JS With next-redux-wrapper
+        </h1> */}
+       
 
         <h1>{posts.title}</h1>
         <p>{posts.price}</p>
         <p>{posts.description}</p>
         <img src={posts.image} alt="" />
+
+      {names && names.map(item=>(
+          <h1 >{item}</h1>
+        ))}
 
 
         

@@ -10,3 +10,11 @@ export const fetchposts=()=>async dispatch=>{
     })
  
 }
+
+
+export const fetchName=()=>async dispatch=>{
+    dispatch({
+        type:types.GET_NAMES,
+        payload:["zafar","salman","naved"]
+    })
+}
